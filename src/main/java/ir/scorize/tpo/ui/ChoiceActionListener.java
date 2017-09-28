@@ -8,10 +8,10 @@ import java.awt.event.ActionListener;
  * Created by mjafar on 9/15/17.
  */
 public class ChoiceActionListener implements ActionListener {
-    private int mChoiceNumber;
-    private QuestionChoiceSaver mSaver;
-    private ButtonGroup mBtnGroup;
-    private TestContentPage mTestPage;
+    protected int mChoiceNumber;
+    protected QuestionChoiceSaver mSaver;
+    protected ButtonGroup mBtnGroup;
+    protected TestContentPage mTestPage;
 
     public ChoiceActionListener(final int choiceNumber, final QuestionChoiceSaver saver, final ButtonGroup btnGroup, final TestContentPage testPage) {
         this.mChoiceNumber = choiceNumber;
@@ -23,29 +23,19 @@ public class ChoiceActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         int currentQuestionNumber = mTestPage.getAbsoluteQuestionNumber();
+        int[] newChoices;
 
         if (this.mSaver.isSelected(currentQuestionNumber, this.mChoiceNumber)) {
             // Deselect this choice
-            int[] newChoices = new int[mSaver.getQuestionSelectedChoices(currentQuestionNumber).length - 1];
-            int i = 0;
-            for(int choice : mSaver.getQuestionSelectedChoices(currentQuestionNumber)) {
-                if (choice != mChoiceNumber) {
-                    newChoices[i++] = choice;
-                }
-            }
-            this.mSaver.saveQuestionSelectedChoices(currentQuestionNumber, newChoices);
-            if (newChoices.length == 0) {
+            newChoices = new int[0];
+            if (mBtnGroup != null) {
                 mBtnGroup.clearSelection();
             }
         } else {
             // Change the choice
-            int[] newChoices = new int[mSaver.getQuestionSelectedChoices(currentQuestionNumber).length - 1];
-            int i = 0;
-            for(int choice : mSaver.getQuestionSelectedChoices(currentQuestionNumber)) {
-                newChoices[i++] = choice;
-            }
-            newChoices[i++] = mChoiceNumber;
-            this.mSaver.saveQuestionSelectedChoices(currentQuestionNumber, newChoices);
+            newChoices = new int[1];
+            newChoices[0] = mChoiceNumber;
         }
+        this.mSaver.saveQuestionSelectedChoices(currentQuestionNumber, newChoices);
     }
 }

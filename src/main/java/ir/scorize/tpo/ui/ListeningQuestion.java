@@ -110,6 +110,11 @@ public class ListeningQuestion implements TestContentPage {
         choice2.addActionListener(new ChoiceActionListener(1, testEnvironment, buttonGroup1, this));
         choice3.addActionListener(new ChoiceActionListener(2, testEnvironment, buttonGroup1, this));
         choice4.addActionListener(new ChoiceActionListener(3, testEnvironment, buttonGroup1, this));
+
+        option1.addActionListener(new MultiValueChoiceActionListener(0, testEnvironment, null, this));
+        option2.addActionListener(new MultiValueChoiceActionListener(1, testEnvironment, null, this));
+        option3.addActionListener(new MultiValueChoiceActionListener(2, testEnvironment, null, this));
+        option4.addActionListener(new MultiValueChoiceActionListener(3, testEnvironment, null, this));
     }
 
 
