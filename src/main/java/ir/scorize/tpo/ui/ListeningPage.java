@@ -29,7 +29,6 @@ public class ListeningPage implements TestContentPage {
         // Go right to the questions
         java.awt.EventQueue.invokeLater(() -> {
             ListeningQuestion listeningPage = new ListeningQuestion(te);
-            te.mCurrentQuestionSet = 0;
             listeningPage.loadListening();
             te.setContentPart(listeningPage, -1);
         });

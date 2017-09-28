@@ -68,10 +68,11 @@ public class ListeningQuestion implements TestContentPage {
 
     private void nextListening(TestEnvironment te) {
         try {
-            questionNumber = 0;
+            ListeningPage lp = new ListeningPage(te);
+            questionNumber = -1;
             ++te.mCurrentQuestionSet;
-            loadListening();
-            te.setContentPart(this, questionNumber);
+            lp.loadListening(te.mCurrentQuestionSet);
+            te.setContentPart(lp, questionNumber);
         } catch (ArrayIndexOutOfBoundsException ex2) {
             String title = "Finish Warning";
             String text = "You have seen all of the questions in this part of the Listening Section.\n" +
