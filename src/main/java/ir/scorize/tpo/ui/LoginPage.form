@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ir.scorize.tpo.ui.LoginPage">
+  <grid id="27dc6" binding="loginPanel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="20" bottom="10" right="20"/>
+    <constraints>
+      <xy x="16" y="49" width="457" height="2569"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="724a8" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="22"/>
+          <text value="Scorize TOEFL preperation software"/>
+        </properties>
+      </component>
+      <component id="4414b" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="5ab2f"/>
+          <text value="Username"/>
+        </properties>
+      </component>
+      <component id="5ab2f" class="javax.swing.JTextField" binding="txtUsername">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <focusCycleRoot value="true"/>
+        </properties>
+      </component>
+      <component id="acf3c" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="e9814"/>
+          <text value="Password"/>
+        </properties>
+      </component>
+      <component id="da1ee" class="javax.swing.JButton" binding="btnLogin">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="70" height="-1"/>
+            <maximum-size width="120" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font style="1"/>
+          <text value="Login"/>
+        </properties>
+      </component>
+      <component id="e9814" class="javax.swing.JPasswordField" binding="txtPassword">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="c445e" class="javax.swing.JTextArea" binding="lblHelp">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="-1" height="150"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1513240"/>
+          <editable value="false"/>
+          <focusable value="false"/>
+          <lineWrap value="true"/>
+          <text value="Use the credentials that you use for logging into the site. If you don't have an account register on https://scorize.com/profile/register/"/>
+        </properties>
+      </component>
+      <component id="112d5" class="javax.swing.JButton" binding="btnRegister">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="70" height="-1"/>
+            <maximum-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font style="1"/>
+          <text value="Register (browser)"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

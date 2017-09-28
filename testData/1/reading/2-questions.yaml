@@ -1,0 +1,98 @@
+- questionText: "The phrase <highlight question=\"15\"> unique among </highlight> in the passage is closest in meaning to ...."
+  choices:
+    - "natural to"
+    - "different from all other"
+    - "quite common among"
+    - "familiar to"
+
+- questionText: "What can be inferred about whales from paragraph 1?"
+  choices:
+    - "They are considered by some to be reptiles."
+    - "Their bodies are built in a way that helps them manage extremely cold temperatures"
+    - "They are distantly related to leatherback turtles."
+    - "They can swim farther than leatherback turtles."
+  followingText: "Paragraph 1 is marked with <marker question=\"16\" style=\"diamond\">"
+
+
+- questionText: "The Word <highlight question=\"17\"> feat </highlight> in the passage is closest in meaning to"
+  choices:
+    - "remarkable achievement"
+    - "common transformation"
+    - "daily activity"
+    - "complex solution"
+
+- questionText: "Paragraph 2 mentions all of the following as true about the body heat of adult leatherback turtles EXCEPT:"
+  choices:
+    - "Their muscles produce heat for maintaining body temperature."
+    - "Their dark bodies help trap solar radiation."
+    - "Their cellular metabolism produces heat as a by-product."
+    - "Basking at the water's surface helps them obtain heat."
+  followingText: "Paragraph 2 is marked with <marker question=\"18\" style=\"diamond\">."
+
+- questionText: "The Word <highlight question=\"19\"> bulk </highlight> in the passage is closest in meaning to"
+  choices:
+    - "strength"
+    - "effort"
+    - "activity"
+    - "mass"
+
+- questionText: "The word <highlight question=\"20\"> it </highlight> in paragraph 4 refers to"
+  choices:
+    - "the problem"
+    - "blood"
+    - "the turtle"
+    - "body temperature"
+
+- questionText: "According to paragraph 4, which of the following features enables the leatherback turtle to stay warm?"
+  choices:
+    - "An insulating layer of blubber"
+    - "A thick, oily skin covering fatty tissue"
+    - "The aerodynamic shape of its flippers"
+    - "A Well-insulated head"
+  followingText: "Paragraph 4 is marked with <marker question=\"21\" style=\"diamond\">"
+
+- questionText: "Which of the sentences below best expresses the essential information in the <highlight question=\"22\"> highlighted sentence </highlight> in the passage? Incorrect choices change the meaning in important ways or leave out essential information."
+  choices:
+    - "In a turtle's countercurrent exchange system, outgoing vessels lie near enough to ingoing ones that heat can be exchanged from the former to the latter before reaching the turtle's flippers."
+    - "Within the turtle's flippers, there is a countercurrent exchange system that allows colder blood vessels to absorb heat from nearby warmer blood vessels and then return warmed blood to the turtle's body."
+    - "In a countercurrent exchange system, a turtle can pick up body heat from being close enough to other turtles, thus raising its blood temperature as it passes them."
+    - "When a turtle places its flippers close to its body, it is able to use its countercurrent exchange system to transfer heat from the warmer blood vessels in its body to the cooler blood vessels in its flippers."
+
+- questionText: "Why does the author mention <highlight question=\"23\"> old-fashioned steam radiator </highlight> in the discussion of countercurrent exchange systems?"
+  choices:
+    - "To argue that a turtle's central heating system is not as highly eVOlVed as that Of Other Warmblooded animals"
+    - "To provide a useful comparison with which to illustrate how a countercurrent exchange system works"
+    - "To suggest that steam radiators were modeled after the sophisticated heating system of turtles"
+    - "To establish the importance of the movement of water in countercurrent exchange systems"
+
+- questionText: "The phrase <highlight question=\"24\"> courses through </highlight> in the passage is closest in meaning to"
+  choices:
+    - "rises through"
+    - "heats up in"
+    - "runs through"
+    - "Collects in"
+
+- questionText: "According to paragraph 6, which of the following statements is most accurate about young leatherback turtles?"
+  choices:
+    - "They lack the countercurrent exchange systems that develop in adulthood."
+    - "Their rate of growth is slower than that of other sea turtles."
+    - "They lose heat easily even with insulation and countercurrent exchange systems."
+    - "They switch between cold-blooded and warm-blooded modes throughout their hatchling stage."
+  followingText: "Paragraph 6 is marked with <marker question=\"25\" style=\"diamond\">"
+
+- questionText: "Look at the four squares <marker question=\"26\" style=\"block\">that indicate where the following sentence could be added to the passage. However, these animals have additional means of staying warm."
+  choices:
+    - "1"
+    - "2"
+    - "3"
+    - "4"
+- questionText: "Directions: An introductory sentence for a brief summary of the passage is provided below. Complete the summary by selecting the THREE answer choices that express the most important ideas in the passage. Some sentences do not belong in the summary because they express ideas that are not presented in the passage or are minor ideas in the passage. This question is worth 2 points. Contrary to what we would expect of reptiles, the
+                 leatherback turtle is actually warm-blooded."
+  choices:
+    - "A. Even though they swim into cold ocean waters, leatherbacks maintain their body heat in much the same way as sea turtles in warm southern oceans do."
+    - "B. The leatherback turtle uses a countercurrent exchange system in order to keep the flippers from drawing heat away from the rest of the body."
+    - "C. The shape of the leatherback turtle's flippers is especially important in maintaining heat in extremely cold northern waters."
+    - "D. The leatherback turtle is able to maintain body heat through sheer size"
+    - "E. Leatherbacks have an insulating layer that can be considered the reptilian version of blubber."
+    - "F. Young leatherbacks often do not survive to adulthood because they are notable to switch from a cold-blooded way of life to a warm-blooded one quickly enough."
+  followingText: "To review passage. Click View Text"
