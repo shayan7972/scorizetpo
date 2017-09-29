@@ -3,9 +3,7 @@ package ir.scorize.tpo;
 import ir.scorize.tpo.net.NetworkManager;
 import ir.scorize.tpo.observers.LoginObserver;
 import ir.scorize.tpo.observers.TokenObserver;
-import ir.scorize.tpo.ui.LoginPage;
-import ir.scorize.tpo.ui.ReadingDirections;
-import ir.scorize.tpo.ui.TestEnvironment;
+import ir.scorize.tpo.ui.*;
 
 import javax.swing.*;
 
@@ -35,7 +33,8 @@ public class Starter {
                 loginPage.setVisible(false);
                 // TODO: open new page
                 testEnvironment.setVisible(true);
-                testEnvironment.setContentPart(new ReadingDirections(), 0);
+//                testEnvironment.setContentPart(new ReadingDirections(), 0);
+                testEnvironment.setContentPart(new SpeakingDirections(), 0);
             }
         }
     };
