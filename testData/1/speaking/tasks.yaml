@@ -1,0 +1,46 @@
+- style: "independent"
+  preparationTime: 2
+  speakingTime: 2
+  question: "What is your favorite room in your house?"
+  questionFile: "1-1.ogg"
+
+- style: "independent"
+  preparationTime: 2
+  speakingTime: 2
+  question: "Do you agree or disagree that people should be respected merely based on their age?"
+  questionFile: "1-2.ogg"
+
+- style: "textandconversation"
+  readingTime: 3
+  preparationTime: 3
+  speakingTime: 6
+  question: "According to blah...."
+  passage: "blah blah blah..."
+  questionFile: "1-3.ogg"
+  conversationFile: "1-3-conversation.ogg"
+
+- style: "textandlecture"
+  readingTime: 45
+  preparationTime: 20
+  speakingTime: 60
+  question: "According to blah...."
+  passage: "You'll have 60 seconds to read this passage.\n\nblah blah blah"
+  questionFile: "1-3.ogg"
+  conversationFile: "1-4-conversation.ogg"
+  lectureImage: "lectureFemale.png"
+
+- style: "conversation"
+  preparationTime: 20
+  speakingTime: 60
+  question: "What was the man's problem?"
+  questionFile: "1-5.ogg"
+  conversationFile: "1-5-conversation.ogg"
+
+- style: "lecture"
+  preparationTime: 20
+  speakingTime: 60
+  question: "Using the points and examples from the talk give us a summary of the thing please."
+  questionFile: "1-5.ogg"
+  conversationFile: "1-5-conversation.ogg"
+  lectureImage: "lectureMale.png"
+

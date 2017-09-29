@@ -9,6 +9,7 @@ import java.util.List;
 public class Test {
     private Reading[] mReadings;
     private Listening[] mListenings;
+    private SpeakingTask[] mSpeakingTasks;
     private int examNumber;
 
     public Test(int examNumber) {
@@ -16,6 +17,26 @@ public class Test {
         int offset = 0;
         offset = prefetchReadings(offset);
         offset = prefetchListenings(offset);
+        offset = prefetchSpeakings(offset);
+//        offset = prefetchWritings(offset);
+    }
+
+    private int prefetchSpeakings(int offset) {
+//        List<SpeakingTask> loadedSpeakings = new LinkedList<>();
+//        SpeakingTask t;
+//        int i = 0;
+//        do {
+//            t = SpeakingTask.loadSpeaking(examNumber, i++, offset);
+//            if (t != null) {
+//                offset += 1;
+//                loadedSpeakings.add(t);
+//            }
+//        } while (t != null);
+//        mSpeakingTasks = loadedSpeakings.toArray(new SpeakingTask[0]);
+
+        mSpeakingTasks = SpeakingTask.loadSpeaking(examNumber);
+        offset += mSpeakingTasks.length;
+        return offset;
     }
 
     private int prefetchListenings(int offset) {
@@ -64,5 +85,9 @@ public class Test {
 
     public int listeningCount() {
         return mListenings.length;
+    }
+
+    public SpeakingTask getSpeaking(int taskNumber) {
+        return mSpeakingTasks[taskNumber];
     }
 }

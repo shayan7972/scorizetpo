@@ -42,7 +42,7 @@ public class SpeakingDirections implements TestContentPage {
             } else {
                 IndependentSpeakingPage sp = new IndependentSpeakingPage(te);
                 te.mCurrentQuestionSet = 0;
-//                sp.loadSpeaking(te.mCurrentQuestionSet);
+                sp.loadSpeaking(te.mCurrentQuestionSet);
                 te.setContentPart(sp, -1);
             }
             panel1.invalidate();
