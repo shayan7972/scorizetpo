@@ -90,4 +90,6 @@ public class Test {
     public SpeakingTask getSpeaking(int taskNumber) {
         return mSpeakingTasks[taskNumber];
     }
+
+    public int speakingCount() { return mSpeakingTasks.length; }
 }

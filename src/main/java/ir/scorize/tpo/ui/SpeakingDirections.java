@@ -40,7 +40,7 @@ public class SpeakingDirections implements TestContentPage {
                 shownHeadset = true;
 //                 TODO: play instructions via sound
             } else {
-                IndependentSpeakingPage sp = new IndependentSpeakingPage(te);
+                SpeakingPages sp = new SpeakingPages(te);
                 te.mCurrentQuestionSet = 0;
                 sp.loadSpeaking(te.mCurrentQuestionSet);
                 te.setContentPart(sp, -1);
