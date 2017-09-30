@@ -1,0 +1,32 @@
+fileName: '2.ogg'
+picturesFileName: '2.jpg'
+questions:
+  - questionText: 'Another question from listening'
+    multiChoice: false
+    choices:
+      - 'Choice A'
+      - 'Choice B'
+      - 'Choice C'
+      - 'Choice D'
+    fileAddress: '2-1.ogg'
+    showHeadsetIcon: false
+
+  - questionText: 'Choose 2 options from below'
+    multiChoice: true
+    choices:
+      - 'Choice 1'
+      - 'Choice 2'
+      - 'Choice 3'
+      - 'Choice 4'
+    fileAddress: '2-2.ogg'
+    showHeadsetIcon: false
+
+  - questionText: 'What is the best plan?'
+    multiChoice: false
+    choices:
+      - 'Plan A'
+      - 'Plan 2'
+      - 'Plan C'
+      - 'Plan 4'
+    fileAddress: '2-3.ogg'
+    showHeadsetIcon: true
