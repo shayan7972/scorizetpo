@@ -32,35 +32,23 @@ public class TimingHelper {
     }
 
     public TimingHelper then(Runnable x) {
-        final int cumulativeWaitTime = waitTime;
+        tasks.add(new OneTimeTimingTask(x, waitTime));
         waitTime = 0;
-        tasks.add(new TimingTask(new TimerTask() {
-            @Override
-            public void run() {
-                x.run();
-                doNextTask();
-            }
-        }, cumulativeWaitTime));
 
         return this;
     }
 
-    public TimingHelper repeat(Function<Integer, Void> x, int period, final int times) {
+    public TimingHelper then(TimingHelper append) {
+        waitTime += append.waitTime;
+        tasks.addAll(append.tasks);
+
+        return this;
+    }
+
+    public TimingHelper repeat(final Function<Integer, Void> x, int period, final int times) {
         final int cumulativeWaitTime = waitTime;
         waitTime = 0;
-        tasks.add(new TimingTask(new TimerTask() {
-            private int counter = 0;
-
-            @Override
-            public void run() {
-                x.apply(counter);
-                counter++;
-                if (counter == times) {
-                    cancel();
-                    doNextTask();
-                }
-            }
-        }, cumulativeWaitTime, period));
+        tasks.add(new PeriodicTimingTask(x, cumulativeWaitTime, period, times));
 
         return this;
     }
@@ -77,32 +65,90 @@ public class TimingHelper {
 
     private void doNextTask() {
         TimingTask task = tasks.poll();
+        System.out.println("Remaining tasks: " + tasks.size());
         if (task != null) {
-            if (task.period <= 0) {
-                // Run Once
-                mTimer.schedule(task.task, task.waitBefore);
-            } else {
-                mTimer.scheduleAtFixedRate(task.task, task.waitBefore, task.period);
+            System.out.println("Scheduling " + task);
+            if (task instanceof OneTimeTimingTask) {
+                mTimer.schedule(task.toTimerTask(this::doNextTask), task.getWaitBefore());
+            } else if (task instanceof PeriodicTimingTask) {
+                mTimer.scheduleAtFixedRate(task.toTimerTask(this::doNextTask), task.getWaitBefore(), ((PeriodicTimingTask) task).getPeriod());
             }
+        } else {
+            System.out.println("Finished. Destroying timer");
+            mTimer.cancel();
         }
     }
 }
 
 
-class TimingTask {
-    TimerTask task;
-    int waitBefore;
-    int period;
+abstract class TimingTask {
+    protected int waitBefore;
 
-    public TimingTask(TimerTask task, int waitBefore) {
-        this.task = task;
+    protected TimingTask(int waitBefore) {
         this.waitBefore = waitBefore;
-        this.period = -1;
     }
 
-    public TimingTask(TimerTask task, int waitBefore, int period) {
+    public int getWaitBefore() {
+        return waitBefore;
+    }
+
+    public TimerTask toTimerTask() {
+        return toTimerTask(null);
+    }
+
+    public abstract TimerTask toTimerTask(Runnable callback);
+}
+
+class OneTimeTimingTask extends TimingTask {
+    private Runnable task;
+
+    public OneTimeTimingTask(Runnable task, int waitBefore) {
+        super(waitBefore);
         this.task = task;
-        this.waitBefore = waitBefore;
+    }
+
+    public TimerTask toTimerTask(Runnable callback) {
+        return new TimerTask() {
+            @Override
+            public void run() {
+                task.run();
+                if (callback != null)
+                    callback.run();
+            }
+        };
+    }
+}
+
+class PeriodicTimingTask extends TimingTask {
+    private Function<Integer, Void> task;
+    private int period;
+    private int times;
+
+    public PeriodicTimingTask(Function<Integer, Void> task, int waitBefore, int period, int times) {
+        super(waitBefore);
+        this.task = task;
         this.period = period;
+        this.times = times;
+    }
+
+    public TimerTask toTimerTask(Runnable callback) {
+        return new TimerTask() {
+            private int counter = 0;
+
+            @Override
+            public void run() {
+                task.apply(counter);
+                counter++;
+                if (counter == times) {
+                    cancel();
+                    if (callback != null)
+                        callback.run();
+                }
+            }
+        };
+    }
+
+    public int getPeriod() {
+        return period;
     }
 }
