@@ -11,8 +11,9 @@ import java.util.function.Function;
  */
 public class TimingHelper {
     private Timer mTimer;
-    private Queue<TimingTask> tasks = new LinkedList<>();
-    private int waitTime = 0;
+    private Queue<TimingTask> mTasks = new LinkedList<>();
+    private int mWaitTime = 0;
+    private boolean mCancelled = false;
 
     public static TimingHelper create() {
         return new TimingHelper();
@@ -23,7 +24,7 @@ public class TimingHelper {
     }
 
     public TimingHelper wait(int seconds) {
-        waitTime += seconds;
+        mWaitTime += seconds;
         return this;
     }
 
@@ -32,23 +33,23 @@ public class TimingHelper {
     }
 
     public TimingHelper then(Runnable x) {
-        tasks.add(new OneTimeTimingTask(x, waitTime));
-        waitTime = 0;
+        mTasks.add(new OneTimeTimingTask(x, mWaitTime));
+        mWaitTime = 0;
 
         return this;
     }
 
     public TimingHelper then(TimingHelper append) {
-        waitTime += append.waitTime;
-        tasks.addAll(append.tasks);
+        mWaitTime += append.mWaitTime;
+        mTasks.addAll(append.mTasks);
 
         return this;
     }
 
     public TimingHelper repeat(final Function<Integer, Void> x, int period, final int times) {
-        final int cumulativeWaitTime = waitTime;
-        waitTime = 0;
-        tasks.add(new PeriodicTimingTask(x, cumulativeWaitTime, period, times));
+        final int cumulativeWaitTime = mWaitTime;
+        mWaitTime = 0;
+        mTasks.add(new PeriodicTimingTask(x, cumulativeWaitTime, period, times));
 
         return this;
     }
@@ -63,10 +64,13 @@ public class TimingHelper {
         doNextTask();
     }
 
+    private TimingTask mCurrentRunningTask;
     private void doNextTask() {
-        TimingTask task = tasks.poll();
-        System.out.println("Remaining tasks: " + tasks.size());
-        if (task != null) {
+        mCurrentRunningTask = mTasks.poll();
+        
+        final TimingTask task = mCurrentRunningTask;
+        System.out.println("Remaining tasks: " + mTasks.size());
+        if (task != null && !mCancelled) {
             System.out.println("Scheduling " + task);
             if (task instanceof OneTimeTimingTask) {
                 mTimer.schedule(task.toTimerTask(this::doNextTask), task.getWaitBefore());
@@ -78,11 +82,18 @@ public class TimingHelper {
             mTimer.cancel();
         }
     }
+    
+    public synchronized void cancel() {
+        mCancelled = true;
+        mCurrentRunningTask.cancelled = true;
+        mTasks.clear();
+    }
 }
 
 
 abstract class TimingTask {
     protected int waitBefore;
+    protected boolean cancelled = false;
 
     protected TimingTask(int waitBefore) {
         this.waitBefore = waitBefore;
@@ -111,7 +122,9 @@ class OneTimeTimingTask extends TimingTask {
         return new TimerTask() {
             @Override
             public void run() {
-                task.run();
+                if (!cancelled) {
+                    task.run();
+                }
                 if (callback != null)
                     callback.run();
             }
@@ -137,9 +150,11 @@ class PeriodicTimingTask extends TimingTask {
 
             @Override
             public void run() {
-                task.apply(counter);
-                counter++;
-                if (counter == times) {
+                if (!cancelled) {
+                    task.apply(counter);
+                    counter++;
+                }
+                if (counter == times || cancelled) {
                     cancel();
                     if (callback != null)
                         callback.run();
